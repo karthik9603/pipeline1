@@ -1,20 +1,13 @@
 pipeline {
-    agent any 
-    stages {
-        stage('Build') { 
-            steps {
-               echo 'Build'
-            }
-        }
-        stage('Test') { 
-            steps {
-               echo 'testing'
-            }
-        }
-        stage('Deploy') { 
-            steps {
-               echo 'Deploying'
-            }
-        }
-    }
+agent any
+parameters {
+string(name:'Greeting',default value:'Hello',description:"How should I greet the world')
+}
+stages {
+stage('Example') {
+steps {
+echo "${params.Greeting} welcome to jenkins world"
+}
+}
+}
 }
